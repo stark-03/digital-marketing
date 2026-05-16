@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Advanced Digital Marketing with AI — Landing Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<style>
+  :root {
+    --ocean-50: #F0F9FF;
+    --ocean-100: #E0F2FE;
+    --ocean-200: #BAE6FD;
+    --ocean-400: #38BDF8;
+    --ocean-500: #0EA5E9;
+    --ocean-600: #0284C7;
+    --ocean-700: #0369A1;
+    --ocean-800: #075985;
+    --ocean-900: #0C4A6E;
+    --navy: #0C2D48;
+    --accent: #FF6B35;
+    --accent-light: #FFF3EE;
+    --text-dark: #0C2D48;
+    --text-mid: #334E68;
+    --text-muted: #627D98;
+    --border: #BAE6FD;
+    --bg-page: #F8FCFF;
+    --bg-section: #F0F9FF;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    background: var(--bg-page);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Sora', sans-serif;
+    color: var(--navy);
+  }
+
+  /* ── NAVBAR ── */
+  .navbar-custom {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 16px rgba(12,45,72,0.06);
+  }
+  .navbar-brand-text {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  .navbar-brand-text span { color: var(--ocean-600); }
+  .nav-link-custom {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .nav-link-custom:hover { background: var(--ocean-50); color: var(--ocean-700); }
+  .btn-nav-cta {
+    background: var(--ocean-600);
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 9px 22px;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .btn-nav-cta:hover { background: var(--ocean-700); color: #fff; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero-section {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: none;
+  }
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('uploads/bg2.jpg') center center / cover no-repeat;
+    transform: scaleX(-1);
+    z-index: 0;
+  }
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.82);
+    z-index: 1;
+  }
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(56,189,248,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,107,53,0.1) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 60%);
+  }
+  .hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 3; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #BAE6FD;
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 28px;
+    backdrop-filter: blur(8px);
+  }
+  .hero-badge .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #38BDF8; animation: pulse-dot 2s infinite; }
+  @keyframes pulse-dot { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.6; transform:scale(1.3);} }
+  .hero-title {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  .hero-title .highlight {
+    background: linear-gradient(135deg, #38BDF8, #7DD3FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 540px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+  .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: 4px; letter-spacing: 0.03em; }
+  .hero-stat-divider { width: 1px; background: rgba(255,255,255,0.15); align-self: stretch; margin: 4px 0; }
+  .hero-cta-group { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn-primary-hero {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px 34px;
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary-hero:hover { background: #e55a25; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,53,0.35); }
+  .btn-secondary-hero {
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-secondary-hero:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .hero-image-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .hero-visual-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 28px;
+    backdrop-filter: blur(12px);
+    width: 100%;
+    max-width: 420px;
+  }
+  .hero-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .hero-tool-chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    font-family: 'Sora', sans-serif;
+  }
+  .hero-tool-icon { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+  .hero-rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+  .stars { color: #FCD34D; font-size: 0.9rem; }
+  .rating-text { color: rgba(255,255,255,0.8); font-size: 0.82rem; }
+
+  /* ── SECTION HEADERS ── */
+  .section-eyebrow {
+    display: inline-block;
+    background: var(--ocean-100);
+    color: var(--ocean-700);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+  }
+  .section-title span { color: var(--ocean-600); }
+  .section-subtitle {
+    color: var(--text-muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    max-width: 580px;
+  }
+  section { padding: 90px 0; }
+
+  /* ── CERTIFIED BY (SLIDER) ── */
+  .certified-section {
+    background: var(--white);
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .certified-label {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .certified-label::before, .certified-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 60px;
+    background: var(--border);
+  }
+  .slider-track-outer { overflow: hidden; position: relative; }
+  .slider-track-outer::before, .slider-track-outer::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    z-index: 2;
+  }
+  .slider-track-outer::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
+  .slider-track-outer::after { right: 0; background: linear-gradient(to left, #fff, transparent); }
+  .slider-track {
+    display: flex;
+    gap: 60px;
+    animation: scroll-left 22s linear infinite;
+    width: max-content;
+    align-items: center;
+  }
+  .slider-track:hover { animation-play-state: paused; }
+  @keyframes scroll-left { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+  .cert-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .cert-logo-box {
+    width: 90px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ocean-50);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 0.72rem;
+    color: var(--ocean-800);
+    text-align: center;
+    padding: 6px;
+    line-height: 1.2;
+  }
+  .cert-logo-name { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+
+  /* ── TOOLS GRID ── */
+  .tools-section { background: var(--bg-section); }
+  .tool-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.25s;
+    height: 100%;
+  }
+  .tool-card:hover { border-color: var(--ocean-400); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(56,189,248,0.12); }
+  .tool-icon-wrap {
+    width: 60px; height: 60px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 1.7rem;
+  }
+  .tool-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; color: var(--navy); }
+  .tool-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--white); }
+  .testimonial-card {
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    height: 100%;
+    transition: all 0.2s;
+  }
+  .testimonial-card:hover { border-color: var(--ocean-400); box-shadow: 0 8px 28px rgba(56,189,248,0.1); }
+  .video-embed-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--navy);
+    margin-bottom: 18px;
+  }
+  .video-embed-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    border-radius: 12px;
+  }
+  .video-placeholder {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0C2D48, #0369A1);
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  .play-btn-large {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    color: #fff;
+    transition: all 0.2s;
+    backdrop-filter: blur(6px);
+  }
+  .video-placeholder:hover .play-btn-large { background: rgba(255,255,255,0.3); transform: scale(1.08); }
+  .video-placeholder-label { color: rgba(255,255,255,0.7); font-size: 0.78rem; margin-top: 12px; }
+  .testimonial-quote { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--ocean-600);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .author-name { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
+  .author-role { font-size: 0.75rem; color: var(--text-muted); }
+  .stars-small { color: #FCD34D; font-size: 0.75rem; }
+
+  /* ── GALLERY SLIDER ── */
+  .gallery-section { background: var(--bg-section); }
+  .gallery-carousel-wrap { position: relative; padding: 0 30px; }
+  .gallery-viewport { overflow: hidden; border-radius: 16px; }
+  .gallery-track { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); }
+  .gallery-item-slide { min-width: calc(100% / 3); padding: 0 10px; box-sizing: border-box; flex-shrink: 0; }
+  @media (max-width: 767px) { .gallery-item-slide { min-width: 100%; padding: 0; } }
+  .gallery-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 10; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--white); border: 1.5px solid var(--border);
+    box-shadow: 0 4px 12px rgba(12,45,72,0.12);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1.1rem; color: var(--navy);
+    transition: all 0.2s;
+  }
+  .gallery-arrow:hover { background: var(--ocean-600); color: #fff; border-color: var(--ocean-600); }
+  .gallery-prev { left: 0; }
+  .gallery-next { right: 0; }
+  .gallery-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+  .gallery-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--ocean-200); cursor: pointer; transition: all 0.2s; border: none;
+  }
+  .gallery-dot.active { background: var(--ocean-600); transform: scale(1.3); }
+  .gallery-item {
+    height: 180px;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+  }
+  .gallery-card-inner {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    position: relative;
+  }
+  .gallery-card-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(12,45,72,0.4);
+  }
+  .gallery-card-text { position: relative; z-index: 1; }
+  .gallery-card-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+
+  /* ── CURRICULUM ── */
+  .curriculum-section { background: var(--white); }
+  .curriculum-tabs .nav-link {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 18px;
+    margin: 4px;
+    background: transparent;
+    transition: all 0.2s;
+  }
+  .curriculum-tabs .nav-link.active,
+  .curriculum-tabs .nav-link:hover {
+    background: var(--ocean-600);
+    color: #fff;
+    border-color: var(--ocean-600);
+  }
+  .week-card {
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .week-card:hover { border-color: var(--ocean-400); box-shadow: 0 6px 20px rgba(56,189,248,0.1); }
+  .week-card.active-week { border-color: var(--ocean-600); background: #fff; box-shadow: 0 6px 20px rgba(56,189,248,0.12); }
+  .week-header { display: flex; align-items: center; gap: 14px; }
+  .week-num {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--ocean-600); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+  .week-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 4px; }
+  .week-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+  .week-content { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); display: none; }
+  .week-card.active-week .week-content { display: block; }
+  .week-content p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 10px; }
+  .tools-pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tools-pill {
+    background: var(--ocean-100);
+    color: var(--ocean-800);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 50px;
+    border: 1px solid var(--ocean-200);
+  }
+  .phase-label {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ocean-600);
+    padding: 14px 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .phase-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 16px; margin-top: 32px; }
+  .project-card {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 22px;
+    color: #fff;
+    transition: transform 0.2s;
+  }
+  .project-card:hover { transform: translateY(-3px); }
+  .project-num { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; color: var(--ocean-400); opacity: 0.5; line-height: 1; margin-bottom: 8px; }
+  .project-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.88rem; color: #fff; margin-bottom: 8px; }
+  .project-desc { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── CLIENTS ── */
+  .clients-section { background: var(--bg-section); }
+  .client-chip {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--navy);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    margin: 6px;
+  }
+  .client-chip:hover { border-color: var(--ocean-400); background: var(--ocean-50); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(56,189,248,0.1); }
+  .client-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ocean-400); }
+
+  /* ── CERTIFICATION ── */
+  .certification-section { background: var(--white); }
+  .cert-recognition-card {
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    text-align: center;
+    transition: all 0.25s;
+    height: 100%;
+  }
+  .cert-recognition-card:hover { border-color: var(--ocean-400); box-shadow: 0 8px 28px rgba(56,189,248,0.12); transform: translateY(-3px); }
+  .cert-big-logo {
+    width: 120px; height: 70px;
+    background: var(--ocean-100);
+    border: 1px solid var(--ocean-200);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--ocean-800);
+    text-align: center;
+    padding: 8px;
+    line-height: 1.3;
+  }
+  .cert-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; }
+  .cert-body { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+  .cert-badge-strip {
+    background: linear-gradient(135deg, var(--navy), var(--ocean-700));
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-badge-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .cert-badge-strip-content { position: relative; z-index: 1; }
+  .cert-badge-strip h3 { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.4rem; color: #fff; margin-bottom: 8px; }
+  .cert-strip-logos { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 24px; }
+  .cert-strip-chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ── DEMO VIDEOS ── */
+  .demo-section { background: var(--bg-section); }
+  .demo-video-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all 0.25s;
+    height: 100%;
+  }
+  .demo-video-card:hover { border-color: var(--ocean-400); box-shadow: 0 10px 32px rgba(56,189,248,0.12); transform: translateY(-4px); }
+  .demo-thumbnail {
+    position: relative;
+    padding-bottom: 56.25%;
+    background: linear-gradient(135deg, #0C2D48, #0369A1);
+    overflow: hidden;
+  }
+  .demo-thumbnail iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .demo-thumbnail-placeholder {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .demo-thumbnail-placeholder:hover .play-btn-large { background: rgba(255,255,255,0.25); }
+  .demo-info { padding: 18px; }
+  .demo-tag {
+    background: var(--ocean-100);
+    color: var(--ocean-700);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .demo-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--navy); margin-bottom: 6px; }
+  .demo-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── TRAINER ── */
+  .trainer-section { background: var(--white); }
+  .trainer-card {
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    transition: all 0.2s;
+  }
+  .trainer-card:hover { border-color: var(--ocean-300); box-shadow: 0 8px 32px rgba(56,189,248,0.1); }
+  .trainer-avatar-wrap { flex-shrink: 0; text-align: center; }
+  .trainer-avatar {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ocean-600), var(--navy));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800; font-size: 2.2rem;
+    color: #fff;
+    margin: 0 auto 12px;
+    border: 4px solid var(--border);
+  }
+  .trainer-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 12px; }
+  .trainer-badge-chip {
+    background: var(--ocean-100);
+    color: var(--ocean-800);
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 50px;
+    text-align: center;
+    border: 1px solid var(--ocean-200);
+  }
+  .trainer-info { flex: 1; min-width: 260px; }
+  .trainer-name { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--navy); margin-bottom: 4px; }
+  .trainer-role { font-size: 1rem; color: var(--ocean-600); font-weight: 600; margin-bottom: 16px; }
+  .trainer-bio { font-size: 0.92rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 24px; }
+  .trainer-stats { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+  .trainer-stat { text-align: center; }
+  .trainer-stat-num { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--ocean-600); }
+  .trainer-stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+  .trainer-expertise { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .exp-tag {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .exp-tag i { color: var(--ocean-500); }
+
+  /* ── ENROLL CTA ── */
+  .enroll-cta {
+    background: linear-gradient(135deg, var(--navy), var(--ocean-700));
+    padding: 90px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .enroll-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 50%, rgba(56,189,248,0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 70% 50%, rgba(255,107,53,0.08) 0%, transparent 50%);
+  }
+  .enroll-cta-content { position: relative; z-index: 1; }
+  .enroll-cta h2 { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 2.4rem; color: #fff; margin-bottom: 14px; }
+  .enroll-cta p { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 36px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    padding: 40px 0;
+    text-align: center;
+  }
+  footer .footer-brand { font-family: 'Sora', sans-serif; font-weight: 800; color: #fff; font-size: 1.1rem; margin-bottom: 8px; }
+  footer p { font-size: 0.82rem; margin: 0; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-stats { gap: 16px; }
+    .hero-stat-num { font-size: 1.4rem; }
+    section { padding: 60px 0; }
+    .trainer-card { flex-direction: column; align-items: center; text-align: center; }
+    .trainer-expertise { justify-content: center; }
+    .trainer-stats { justify-content: center; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── SCROLL TOP ── */
+  /* ── FLOATING CONTACT BUTTON ── */
+  .fab-container {
+    position: fixed;
+    bottom: 28px; left: 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .fab-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+  .fab-options.open { max-height: 300px; opacity: 1; }
+  .fab-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .fab-option-icon {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .fab-option:hover .fab-option-icon { transform: scale(1.1); }
+  .fab-option-label {
+    background: #fff;
+    color: var(--navy);
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    white-space: nowrap;
+  }
+  .fab-whatsapp-icon { background: #25D366; }
+  .fab-call-icon    { background: #0369A1; }
+  .fab-location-icon { background: #FF6B35; }
+  .fab-main-btn {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 16px rgba(12,45,72,0.3);
+    transition: all 0.3s;
+  }
+  .fab-main-btn:hover { background: var(--ocean-700); transform: scale(1.05); }
+  .fab-main-btn.active { background: #e53e3e; }
+
+  .scroll-top {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--ocean-600);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 999;
+    border: none;
+    box-shadow: 0 4px 16px rgba(12,45,72,0.2);
+  }
+  .scroll-top.visible { opacity: 1; }
+  .scroll-top:hover { background: var(--ocean-700); transform: translateY(-2px); }
+
+  /* ── ADD VIDEO INPUT WIDGET ── */
+  .add-video-form {
+    background: var(--white);
+    border: 1.5px dashed var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .add-video-form:hover { border-color: var(--ocean-400); }
+  .add-video-form input {
+    width: 100%;
+    padding: 11px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    background: var(--bg-section);
+    margin: 10px 0;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .add-video-form input:focus { border-color: var(--ocean-400); }
+  .add-video-form select {
+    width: 100%;
+    padding: 11px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    background: var(--bg-section);
+    margin: 6px 0;
+    outline: none;
+  }
+  .btn-add-video {
+    background: var(--ocean-600);
+    color: #fff;
+    border: none;
+    padding: 11px 24px;
+    border-radius: 10px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-add-video:hover { background: var(--ocean-700); }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar-custom">
+  <div class="container d-flex align-items-center justify-content-between gap-3">
+    <div class="navbar-brand-text">Belgaum Institute of <span>Digital Marketing</span></div>
+    <div class="d-none d-lg-flex align-items-center gap-1">
+      <a href="#tools" class="nav-link-custom">Tools</a>
+      <a href="#curriculum" class="nav-link-custom">Curriculum</a>
+      <a href="#testimonials" class="nav-link-custom">Reviews</a>
+      <a href="#trainer" class="nav-link-custom">Trainer</a>
+      <a href="#demo" class="nav-link-custom">Demo</a>
+    </div>
+    <div class="d-none d-lg-flex align-items-center gap-2">
+      <a href="tel:9108101795" class="btn-nav-cta" style="background:var(--ocean-600);display:inline-flex;align-items:center;gap:6px;"><i class="bi bi-telephone-fill"></i> 9108101795</a>
+      <a href="tel:7619123399" class="btn-nav-cta" style="background:var(--ocean-600);display:inline-flex;align-items:center;gap:6px;"><i class="bi bi-telephone-fill"></i> 7619123399</a>
+      <a href="https://wa.me/919108101795" target="_blank" class="btn-nav-cta" style="background:#25D366;display:inline-flex;align-items:center;gap:6px;"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-bg-pattern"></div>
+  <div class="container hero-content py-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Recognised by DPPIT, Govt. of India · ISO 9001:2015 · MSME
+        </div>
+        <h1 class="hero-title">
+          Advanced <span class="highlight">Digital Marketing</span> with Artificial Intelligence
+        </h1>
+        <p class="hero-subtitle">
+          Master SEO · Paid Ads · Social Media · Content Strategy · Marketing Automation — from beginner to industry-ready in just 2 months.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">1,000+</div>
+            <div class="hero-stat-label">Students Trained</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">2</div>
+            <div class="hero-stat-label">Months Duration</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">4.8⭐</div>
+            <div class="hero-stat-label">Google Rating</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5–10</div>
+            <div class="hero-stat-label">Micro Batch Size</div>
+          </div>
+        </div>
+        <div class="hero-cta-group">
+          <a href="https://wa.me/919108101795" target="_blank" class="btn-primary-hero" style="background:#25D366;"><i class="bi bi-whatsapp"></i> WhatsApp Us</a>
+          <a href="tel:9108101795" class="btn-secondary-hero"><i class="bi bi-telephone-fill"></i> Call 9108101795</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-image-block">
+          <div class="hero-visual-card">
+            <div class="hero-rating-bar">
+              <span class="stars">★★★★★</span>
+              <span class="rating-text">4.8/5 · 1000+ Verified Google Reviews</span>
+            </div>
+            <div style="color: rgba(255,255,255,0.5); font-size:0.75rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; margin-bottom:10px;">Tools You'll Master</div>
+            <div class="hero-tools-grid">
+              <div class="hero-tool-chip"><img src="uploads/google_ads.png" alt="Google Ads" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+              <div class="hero-tool-chip"><img src="uploads/meta.png" alt="Meta Ads" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+              <div class="hero-tool-chip"><img src="uploads/semrush.png" alt="SEMrush" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+              <div class="hero-tool-chip"><img src="uploads/ahrefs.png" alt="Ahrefs" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+              <div class="hero-tool-chip"><img src="uploads/hubspot.png" alt="HubSpot" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+              <div class="hero-tool-chip"><img src="uploads/chatgpt.png" alt="ChatGPT AI" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+              <div class="hero-tool-chip"><img src="uploads/canva.png" alt="Canva" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+              <div class="hero-tool-chip"><img src="uploads/google_analytics.png" alt="Analytics" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+              <div class="hero-tool-chip"><img src="uploads/zapier.png" alt="Zapier" class="hero-tool-icon" style="width:50px;height:50px;object-fit:contain;margin:0 auto;display:block;background:#fff;border-radius:10px;padding:6px;"></div>
+            </div>
+            <div style="margin-top:18px; padding:12px 16px; background:rgba(255,255,255,0.08); border-radius:10px; display:flex; align-items:center; gap:10px;">
+              <i class="bi bi-people-fill" style="color:#38BDF8; font-size:1.1rem;"></i>
+              <span style="font-size:0.78rem; color:rgba(255,255,255,0.7);">Hybrid Mode: Online + Offline · Anyone can join · Beginner to Advanced</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNISED & CERTIFIED BY -->
+<div class="certified-section" id="certified">
+  <div class="container">
+    <div class="certified-label">Recognised &amp; Certified By</div>
+  </div>
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px;">
+      <div class="cert-logo"><div class="cert-logo-box" style="background:#fff;"><img src="uploads/skill-india.png" alt="Skill India" style="width:100%;height:100%;object-fit:contain;"></div><span class="cert-logo-name">Skill India</span></div>
+      <div class="cert-logo"><div class="cert-logo-box" style="background:#fff;"><img src="uploads/startup-india.png" alt="Startup India" style="width:100%;height:100%;object-fit:contain;"></div><span class="cert-logo-name">Startup India</span></div>
+      <div class="cert-logo"><div class="cert-logo-box" style="background:#fff;"><img src="uploads/make_in_india.png" alt="Make in India" style="width:100%;height:100%;object-fit:contain;"></div><span class="cert-logo-name">Make in India</span></div>
+      <div class="cert-logo"><div class="cert-logo-box" style="background:#fff;"><img src="uploads/aicte.png" alt="AICTE" style="width:100%;height:100%;object-fit:contain;"></div><span class="cert-logo-name">AICTE</span></div>
+      <div class="cert-logo"><div class="cert-logo-box" style="background:#fff;"><img src="uploads/iso.png" alt="ISO" style="width:100%;height:100%;object-fit:contain;"></div><span class="cert-logo-name">ISO Certified</span></div>
+      <div class="cert-logo"><div class="cert-logo-box" style="background:#fff;"><img src="uploads/govt_india.png" alt="Govt. of India" style="width:100%;height:100%;object-fit:contain;"></div><span class="cert-logo-name">Govt. of India</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS & TECHNOLOGIES -->
+<section class="tools-section" id="tools">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <span class="section-eyebrow">Tools &amp; Technologies</span>
+      <h2 class="section-title">Industry Tools You Will <span>Master</span></h2>
+      <p class="section-subtitle mx-auto">Get hands-on with 20+ cutting-edge digital marketing tools used by top brands worldwide.</p>
+    </div>
+    <div class="row g-3">
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#FEF9C3;"><img src="uploads/google_ads.png" alt="Google Ads" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Google Ads</div><div class="tool-desc">Search &amp; Display campaigns</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#EFF6FF;"><img src="uploads/meta.png" alt="Meta Ads" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Meta Ads</div><div class="tool-desc">Facebook &amp; Instagram Ads</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#F0FDF4;"><img src="uploads/semrush.png" alt="SEMrush" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">SEMrush</div><div class="tool-desc">Keyword Research &amp; Audit</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#FFF7ED;"><img src="uploads/ahrefs.png" alt="Ahrefs" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Ahrefs</div><div class="tool-desc">Backlinks &amp; SEO analysis</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#FFF0F0;"><img src="uploads/canva.png" alt="Canva" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Canva</div><div class="tool-desc">Creative &amp; visual design</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#F0F9FF;"><img src="uploads/mailchimp.png" alt="Mailchimp" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Mailchimp</div><div class="tool-desc">Email marketing automation</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#FDF4FF;"><img src="uploads/wordpress.png" alt="WordPress" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">WordPress</div><div class="tool-desc">CMS &amp; website building</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#F0FDF4;"><img src="uploads/google_analytics.png" alt="Google Analytics 4" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Google Analytics 4</div><div class="tool-desc">Data &amp; performance tracking</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#FEFCE8;"><img src="uploads/hubspot.png" alt="HubSpot" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">HubSpot</div><div class="tool-desc">CRM &amp; marketing hub</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#F0F9FF;"><img src="uploads/zapier.png" alt="Zapier" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Zapier</div><div class="tool-desc">Workflow automation</div></div></div>
+
+      <!-- AI Tools separator -->
+      <div class="col-12 fade-in-up" style="padding-top:12px;padding-bottom:4px;">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div style="flex:1;height:1.5px;background:linear-gradient(90deg,transparent,var(--ocean-200));"></div>
+          <span style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--ocean-600),var(--ocean-800));color:#fff;font-family:'Sora',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;padding:6px 18px;border-radius:50px;white-space:nowrap;"><i class="bi bi-stars"></i> AI TOOLS</span>
+          <div style="flex:1;height:1.5px;background:linear-gradient(90deg,var(--ocean-200),transparent);"></div>
+        </div>
+      </div>
+
+      <!-- AI Tools -->
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#F0FDF4;"><img src="uploads/chatgpt.png" alt="ChatGPT / AI" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">ChatGPT / AI</div><div class="tool-desc">AI content &amp; automation</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#FFF7ED;"><img src="uploads/jasper.png" alt="Jasper AI" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Jasper AI</div><div class="tool-desc">AI copywriting at scale</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#ffffff;border:1px solid var(--border);"><img src="uploads/midjourney.png" alt="Midjourney" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Midjourney</div><div class="tool-desc">AI image generation</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#F0F4FF;"><img src="uploads/copy-ai.png" alt="Copy.ai" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Copy.ai</div><div class="tool-desc">AI marketing copy &amp; captions</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#ffffff;border:1px solid var(--border);"><img src="uploads/runway.png" alt="Runway ML" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Runway ML</div><div class="tool-desc">AI video editing &amp; generation</div></div></div>
+      <div class="col-6 col-md-3 col-lg-2 fade-in-up"><div class="tool-card"><div class="tool-icon-wrap" style="background:#F5F0FF;"><img src="uploads/perplexity.png" alt="Perplexity" style="width:44px;height:44px;object-fit:contain;"></div><div class="tool-name">Perplexity</div><div class="tool-desc">AI research &amp; market insights</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <span class="section-eyebrow">Student Testimonials</span>
+      <h2 class="section-title">Real Stories from <span>Real Students</span></h2>
+      <p class="section-subtitle mx-auto">Hear directly from our students about their journey and transformation.</p>
+    </div>
+    <div class="row g-4" id="testimonialGrid">
+      <!-- Testimonial 1 -->
+      <div class="col-md-6 col-lg-4 fade-in-up">
+        <div class="testimonial-card">
+          <div class="video-embed-wrapper" id="vw1">
+            <div class="video-placeholder" onclick="loadYT('vw1','https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="play-btn-large"><i class="bi bi-play-fill"></i></div>
+              <div class="video-placeholder-label">Student Testimonial Video</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"This program gave me the exact skills I needed to land my first digital marketing role. The hands-on projects made all the difference."</p>
+          <div class="testimonial-author">
+            <div class="avatar">VS</div>
+            <div>
+              <div class="author-name">Verified Student</div>
+              <div class="author-role">Placed at Digital Agency</div>
+              <div class="stars-small mt-1">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 2 -->
+      <div class="col-md-6 col-lg-4 fade-in-up">
+        <div class="testimonial-card">
+          <div class="video-embed-wrapper" id="vw2">
+            <div class="video-placeholder" onclick="loadYT('vw2','https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="play-btn-large"><i class="bi bi-play-fill"></i></div>
+              <div class="video-placeholder-label">Student Testimonial Video</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"The micro-batch approach means every student gets personal attention. The AI tools training gave me a massive edge in the job market."</p>
+          <div class="testimonial-author">
+            <div class="avatar" style="background:var(--ocean-700);">RK</div>
+            <div>
+              <div class="author-name">Verified Student</div>
+              <div class="author-role">Freelance Digital Marketer</div>
+              <div class="stars-small mt-1">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 3 - Add Your Own -->
+      <div class="col-md-6 col-lg-4 fade-in-up">
+        <div class="testimonial-card">
+          <div class="video-embed-wrapper" id="vw3">
+            <div class="video-placeholder" onclick="loadYT('vw3','https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="play-btn-large"><i class="bi bi-play-fill"></i></div>
+              <div class="video-placeholder-label">Student Testimonial Video</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"From zero knowledge to running paid campaigns for real clients — in just 8 weeks. The curriculum is genuinely world-class."</p>
+          <div class="testimonial-author">
+            <div class="avatar" style="background:#0C4A6E;">PM</div>
+            <div>
+              <div class="author-name">Verified Student</div>
+              <div class="author-role">Performance Marketer</div>
+              <div class="stars-small mt-1">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STUDENT GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="container mb-4">
+    <div class="text-center fade-in-up">
+      <span class="section-eyebrow">Student Gallery</span>
+      <h2 class="section-title">Our <span>Learning Community</span></h2>
+      <p class="section-subtitle mx-auto">Moments from classes, workshops, and placement celebrations.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="gallery-carousel-wrap">
+      <button class="gallery-arrow gallery-prev" onclick="galleryMove(-1)"><i class="bi bi-chevron-left"></i></button>
+      <button class="gallery-arrow gallery-next" onclick="galleryMove(1)"><i class="bi bi-chevron-right"></i></button>
+      <div class="gallery-viewport">
+        <div class="gallery-track" id="galleryTrack">
+          <div class="gallery-item-slide"><div class="gallery-item"><div class="gallery-card-inner" style="background:linear-gradient(135deg,#0369A1,#0EA5E9);"><span class="gallery-card-icon">🎓</span><span class="gallery-card-text">Batch Graduation<br>Ceremony 2025</span></div></div></div>
+          <div class="gallery-item-slide"><div class="gallery-item"><div class="gallery-card-inner" style="background:linear-gradient(135deg,#0C2D48,#075985);"><span class="gallery-card-icon">💻</span><span class="gallery-card-text">Live Campaign<br>Workshop</span></div></div></div>
+          <div class="gallery-item-slide"><div class="gallery-item"><div class="gallery-card-inner" style="background:linear-gradient(135deg,#0284C7,#38BDF8);"><span class="gallery-card-icon">🏆</span><span class="gallery-card-text">Hackathon &amp;<br>Competition Wins</span></div></div></div>
+          <div class="gallery-item-slide"><div class="gallery-item"><div class="gallery-card-inner" style="background:linear-gradient(135deg,#075985,#0369A1);"><span class="gallery-card-icon">🤝</span><span class="gallery-card-text">Industry Expert<br>Guest Sessions</span></div></div></div>
+          <div class="gallery-item-slide"><div class="gallery-item"><div class="gallery-card-inner" style="background:linear-gradient(135deg,#0EA5E9,#7DD3FC);"><span class="gallery-card-icon">📸</span><span class="gallery-card-text">Behind the Scenes<br>of Learning</span></div></div></div>
+          <div class="gallery-item-slide"><div class="gallery-item"><div class="gallery-card-inner" style="background:linear-gradient(135deg,#0C2D48,#0284C7);"><span class="gallery-card-icon">🚀</span><span class="gallery-card-text">Placement Success<br>Stories</span></div></div></div>
+          <div class="gallery-item-slide"><div class="gallery-item"><div class="gallery-card-inner" style="background:linear-gradient(135deg,#FF6B35,#FFAD8F);"><span class="gallery-card-icon">✨</span><span class="gallery-card-text">Project Presentations<br>&amp; Reviews</span></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-dots" id="galleryDots"></div>
+  </div>
+</section>
+
+<!-- COURSE CURRICULUM -->
+<section class="curriculum-section" id="curriculum">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <span class="section-eyebrow">Course Curriculum · 2026</span>
+      <h2 class="section-title">Your 8-Week <span>Transformation</span> Journey</h2>
+      <p class="section-subtitle mx-auto">A meticulously structured programme from fundamentals to full-funnel AI-powered marketing mastery.</p>
+    </div>
+
+    <div class="row g-4 mb-4">
+      <div class="col-md-3 fade-in-up"><div style="background:var(--bg-section);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;"><div style="font-size:2rem;font-weight:800;font-family:'Sora',sans-serif;color:var(--ocean-600);">1,000+</div><div style="font-size:0.8rem;color:var(--text-muted);">Students Trained</div></div></div>
+      <div class="col-md-3 fade-in-up"><div style="background:var(--bg-section);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;"><div style="font-size:2rem;font-weight:800;font-family:'Sora',sans-serif;color:var(--ocean-600);">2 Months</div><div style="font-size:0.8rem;color:var(--text-muted);">Programme Duration</div></div></div>
+      <div class="col-md-3 fade-in-up"><div style="background:var(--bg-section);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;"><div style="font-size:2rem;font-weight:800;font-family:'Sora',sans-serif;color:var(--ocean-600);">5–10</div><div style="font-size:0.8rem;color:var(--text-muted);">Micro Batch Size</div></div></div>
+      <div class="col-md-3 fade-in-up"><div style="background:var(--bg-section);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;"><div style="font-size:2rem;font-weight:800;font-family:'Sora',sans-serif;color:var(--ocean-600);">4.8 / 5</div><div style="font-size:0.8rem;color:var(--text-muted);">Google Rating ⭐</div></div></div>
+    </div>
+
+    <div class="phase-label">Phase 1 — Foundations &amp; SEO Mastery</div>
+    <div class="week-card active-week" onclick="toggleWeek(this)">
+      <div class="week-header">
+        <div class="week-num">W1</div>
+        <div><div class="week-title">Introduction to Digital Marketing &amp; SEO Basics</div><div class="week-subtitle">Keyword Research · Meta Tags · Content Structure</div></div>
+        <i class="bi bi-chevron-down ms-auto" style="color:var(--text-muted);font-size:0.9rem;transition:transform 0.2s;"></i>
+      </div>
+      <div class="week-content">
+        <p>Understand how brands leverage digital platforms for growth, explore key channels (SEO, paid, social, email) and career roles in digital marketing. Learn keyword targeting strategies, meta tag optimisation, and content structuring.</p>
+        <div class="tools-pill-row">
+          <span class="tools-pill">Google Search Console</span><span class="tools-pill">SEMrush</span><span class="tools-pill">Ahrefs Keywords Explorer</span><span class="tools-pill">HubSpot Academy</span><span class="tools-pill">Canva Magic Studio</span>
+        </div>
+      </div>
+    </div>
+    <div class="week-card" onclick="toggleWeek(this)">
+      <div class="week-header">
+        <div class="week-num">W2</div>
+        <div><div class="week-title">Advanced SEO &amp; Analytics</div><div class="week-subtitle">Link Building · Technical SEO · Google Analytics 4</div></div>
+        <i class="bi bi-chevron-down ms-auto" style="color:var(--text-muted);font-size:0.9rem;transition:transform 0.2s;"></i>
+      </div>
+      <div class="week-content">
+        <p>Build domain authority with link-building strategies, tackle technical SEO issues, and track performance using Google Analytics 4. Deep-dive into core web vitals and site audit methodologies.</p>
+        <div class="tools-pill-row">
+          <span class="tools-pill">Google Analytics 4</span><span class="tools-pill">Ahrefs</span><span class="tools-pill">Google Search Console</span><span class="tools-pill">SEMrush Site Audit</span>
+        </div>
+      </div>
+    </div>
+    <div class="week-card" onclick="toggleWeek(this)">
+      <div class="week-header">
+        <div class="week-num">W3</div>
+        <div><div class="week-title">Advanced SEO, Content Intelligence &amp; GEO</div><div class="week-subtitle">Generative Engine Optimisation · AI-Powered Analytics</div></div>
+        <i class="bi bi-chevron-down ms-auto" style="color:var(--text-muted);font-size:0.9rem;transition:transform 0.2s;"></i>
+      </div>
+      <div class="week-content">
+        <p>Explore Generative Engine Optimisation (GEO) — the next frontier of SEO. Leverage AI tools for content intelligence, predictive insights, and advanced analytics automation.</p>
+        <div class="tools-pill-row">
+          <span class="tools-pill">Surfer AI</span><span class="tools-pill">Clearscope</span><span class="tools-pill">MarketMuse</span><span class="tools-pill">Alli AI</span><span class="tools-pill">Factors.ai</span><span class="tools-pill">Profound</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-label">Phase 2 — Social Media &amp; Paid Ads</div>
+    <div class="week-card" onclick="toggleWeek(this)">
+      <div class="week-header">
+        <div class="week-num">W4</div>
+        <div><div class="week-title">Google Ads, Meta Ads &amp; Social Media with AI</div><div class="week-subtitle">Facebook · Instagram · LinkedIn · AI-Powered Campaigns</div></div>
+        <i class="bi bi-chevron-down ms-auto" style="color:var(--text-muted);font-size:0.9rem;transition:transform 0.2s;"></i>
+      </div>
+      <div class="week-content">
+        <p>Create engaging content for Facebook, Instagram, and LinkedIn. Run targeted ad campaigns and understand platform algorithms. Use AI for performance optimisation across all channels.</p>
+        <div class="tools-pill-row">
+          <span class="tools-pill">Ryze AI (Google)</span><span class="tools-pill">Madgicx (Meta)</span><span class="tools-pill">Surfer AI (SEO)</span><span class="tools-pill">Jasper (Copywriting)</span><span class="tools-pill">Zapier</span>
+        </div>
+      </div>
+    </div>
+    <div class="week-card" onclick="toggleWeek(this)">
+      <div class="week-header">
+        <div class="week-num">W5</div>
+        <div><div class="week-title">Paid Ads &amp; PPC Mastery</div><div class="week-subtitle">Google Search · Display Campaigns · A/B Testing · Bid Strategy</div></div>
+        <i class="bi bi-chevron-down ms-auto" style="color:var(--text-muted);font-size:0.9rem;transition:transform 0.2s;"></i>
+      </div>
+      <div class="week-content">
+        <p>Set up Google Search and Display campaigns, run A/B tests, and optimise ad spend using Meta Ads Manager and Google Ads. Master bidding strategies and ROAS optimisation.</p>
+        <div class="tools-pill-row">
+          <span class="tools-pill">Google Ads</span><span class="tools-pill">Meta Ads Manager</span><span class="tools-pill">LinkedIn Ads</span><span class="tools-pill">Google Tag Manager</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-label">Phase 3 — Content &amp; Automation</div>
+    <div class="week-card" onclick="toggleWeek(this)">
+      <div class="week-header">
+        <div class="week-num">W6</div>
+        <div><div class="week-title">Content Marketing with AI</div><div class="week-subtitle">Blog Strategy · Email Funnels · Persuasion Frameworks · Video AI</div></div>
+        <i class="bi bi-chevron-down ms-auto" style="color:var(--text-muted);font-size:0.9rem;transition:transform 0.2s;"></i>
+      </div>
+      <div class="week-content">
+        <p>Craft compelling blog content, build email funnels, and write high-converting copy using storytelling and persuasion frameworks. Automate content workflows using AI-to-video pipelines.</p>
+        <div class="tools-pill-row">
+          <span class="tools-pill">Jasper AI</span><span class="tools-pill">Writesonic</span><span class="tools-pill">Copy.ai</span><span class="tools-pill">LTX Studio</span><span class="tools-pill">HeyGen</span><span class="tools-pill">Zapier Central</span><span class="tools-pill">Make</span>
+        </div>
+      </div>
+    </div>
+    <div class="week-card" onclick="toggleWeek(this)">
+      <div class="week-header">
+        <div class="week-num">W7</div>
+        <div><div class="week-title">Marketing Automation &amp; CRM with AI</div><div class="week-subtitle">HubSpot · Salesforce · Zoho · Klaviyo AI · Intercom</div></div>
+        <i class="bi bi-chevron-down ms-auto" style="color:var(--text-muted);font-size:0.9rem;transition:transform 0.2s;"></i>
+      </div>
+      <div class="week-content">
+        <p>Use HubSpot workflows to automate campaigns, manage leads, and improve ROI through systematic nurturing sequences. Explore Salesforce, HubSpot, and Zoho CRM for modern marketing operations.</p>
+        <div class="tools-pill-row">
+          <span class="tools-pill">Salesforce</span><span class="tools-pill">HubSpot</span><span class="tools-pill">Zoho CRM</span><span class="tools-pill">Lindy AI</span><span class="tools-pill">Conversica</span><span class="tools-pill">Klaviyo AI</span><span class="tools-pill">Intercom</span>
+        </div>
+      </div>
+    </div>
+    <div class="week-card" onclick="toggleWeek(this)">
+      <div class="week-header">
+        <div class="week-num">W8</div>
+        <div><div class="week-title">Full-Funnel Campaign + AI-Powered Career Prep</div><div class="week-subtitle">Capstone Project · Resume · LinkedIn · Mock Interviews</div></div>
+        <i class="bi bi-chevron-down ms-auto" style="color:var(--text-muted);font-size:0.9rem;transition:transform 0.2s;"></i>
+      </div>
+      <div class="week-content">
+        <p>Execute a full-funnel AI powered campaign from strategy to reporting. Build your professional portfolio, optimise your LinkedIn profile, and prepare for placement with mock interviews and resume workshops.</p>
+        <div class="tools-pill-row">
+          <span class="tools-pill">AI Campaign Strategy</span><span class="tools-pill">Full-Funnel Capstone</span><span class="tools-pill">AI Content at Scale</span><span class="tools-pill">Resume Build</span><span class="tools-pill">LinkedIn Optimization</span><span class="tools-pill">Mock Interviews</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="mt-5 fade-in-up">
+      <h4 style="font-family:'Sora',sans-serif; font-weight:800; color:var(--navy); margin-bottom:20px;">Hands On Projects You Will Build</h4>
+      <div class="projects-grid">
+        <div class="project-card"><div class="project-num">01</div><div class="project-title">SEO Audit for a Real Business</div><div class="project-desc">Perform a full technical and on-page SEO audit, identify gaps, and present a ranked action plan.</div></div>
+        <div class="project-card"><div class="project-num">02</div><div class="project-title">Social Media Campaign for a Brand Launch</div><div class="project-desc">Plan, create, and execute a multi-platform social media launch campaign for a real or simulated brand.</div></div>
+        <div class="project-card"><div class="project-num">03</div><div class="project-title">Google Ads PPC Campaign Optimisation</div><div class="project-desc">Build and optimise a live Google Ads campaign — from keyword research to bid strategy and A/B testing.</div></div>
+        <div class="project-card"><div class="project-num">04</div><div class="project-title">Email Marketing Funnel for E-Commerce</div><div class="project-desc">Design an automated email journey — from welcome series to cart abandonment recovery.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS WHO TRUST US
+<section class="clients-section" id="clients">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <span class="section-eyebrow">Clients &amp; Placements</span>
+      <h2 class="section-title">Companies That <span>Trust Us</span></h2>
+      <p class="section-subtitle mx-auto">Our learners are placed at leading companies across India and worldwide. 300+ global brands trust our talent.</p>
+    </div>
+    <div class="text-center fade-in-up">
+      <img src="uploads/alumni.png" alt="Companies That Trust Us" style="width:100%;height:auto;border-radius:12px;display:block;margin:0 auto;">
+    </div>
+  </div>
+</section> -->
+
+<!-- CERTIFICATION & RECOGNITION -->
+<section class="certification-section" id="certifications">
+    <!-- Clients Who Trust Us -->
+    <div class="cert-badge-strip mt-5 fade-in-up">
+      <div class="cert-badge-strip-content">
+        <h3>Clients Who Trust Us</h3>
+        <p style="color:rgba(255,255,255,0.65); font-size:0.9rem; margin-bottom:0;">Our students and curriculum have been trusted by companies across India</p>
+        <div class="mt-4">
+          <img src="uploads/alumni.png" alt="Clients Who Trust Us" style="width:100%;height:auto;border-radius:12px;display:block;margin:0 auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO VIDEOS -->
+<section class="demo-section" id="demo">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <span class="section-eyebrow">Demo Videos</span>
+      <h2 class="section-title">See the <span>Course in Action</span></h2>
+      <p class="section-subtitle mx-auto">Watch sample lessons and get a feel for the quality and depth of our training.</p>
+    </div>
+    <div class="row g-4" id="demoGrid">
+      <div class="col-md-6 col-lg-4 fade-in-up">
+        <div class="demo-video-card">
+          <div class="demo-thumbnail" id="dv1">
+            <!-- CHANGE ME: Replace the YouTube embed URL below with your actual video (format: https://www.youtube.com/embed/VIDEO_ID) -->
+            <div class="demo-thumbnail-placeholder" onclick="loadYT('dv1','https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="play-btn-large"><i class="bi bi-play-fill"></i></div>
+              <div class="video-placeholder-label" style="margin-top:10px; font-size:0.78rem; color:rgba(255,255,255,0.65);">Preview Lesson</div>
+            </div>
+          </div>
+          <div class="demo-info">
+            <span class="demo-tag">SEO</span>
+            <div class="demo-title">Introduction to Digital Marketing &amp; SEO</div>
+            <div class="demo-desc">Week 1 overview what digital marketing is, why it matters and your learning roadmap.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in-up">
+        <div class="demo-video-card">
+          <div class="demo-thumbnail" id="dv2">
+            <!-- CHANGE ME: Replace the YouTube embed URL below with your actual video (format: https://www.youtube.com/embed/VIDEO_ID) -->
+            <div class="demo-thumbnail-placeholder" onclick="loadYT('dv2','https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="play-btn-large"><i class="bi bi-play-fill"></i></div>
+              <div class="video-placeholder-label" style="margin-top:10px; font-size:0.78rem; color:rgba(255,255,255,0.65);">Preview Lesson</div>
+            </div>
+          </div>
+          <div class="demo-info">
+            <span class="demo-tag">Paid Ads</span>
+            <div class="demo-title">Google Ads Campaign Setup Live</div>
+            <div class="demo-desc">Watch a real Google Ads campaign be built from scratch keywords to conversion tracking.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in-up">
+        <div class="demo-video-card">
+          <div class="demo-thumbnail" id="dv3">
+            <!-- CHANGE ME: Replace the YouTube embed URL below with your actual video (format: https://www.youtube.com/embed/VIDEO_ID) -->
+            <div class="demo-thumbnail-placeholder" onclick="loadYT('dv3','https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="play-btn-large"><i class="bi bi-play-fill"></i></div>
+              <div class="video-placeholder-label" style="margin-top:10px; font-size:0.78rem; color:rgba(255,255,255,0.65);">Preview Lesson</div>
+            </div>
+          </div>
+          <div class="demo-info">
+            <span class="demo-tag">AI Tools</span>
+            <div class="demo-title">AI-Powered Content Creation with Jasper</div>
+            <div class="demo-desc">How to use Jasper AI + Zapier to create and publish blog content at scale automatically.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRAINER DETAILS -->
+<section class="trainer-section" id="trainer">
+  <div class="container">
+    <div class="text-center mb-5 fade-in-up">
+      <span class="section-eyebrow">Your Trainer</span>
+      <h2 class="section-title">Learn from an <span>Industry Expert</span></h2>
+    </div>
+    <div class="trainer-card fade-in-up">
+      <div class="trainer-avatar-wrap">
+        <div class="trainer-avatar" style="padding:0;overflow:hidden;"><img src="uploads/trainer.png" alt="Trainer" style="width:100%;height:100%;object-fit:cover;object-position:top;"></div>
+        <div class="trainer-badges">
+          <span class="trainer-badge-chip">Google Certified</span>
+          <span class="trainer-badge-chip">Meta Blueprint</span>
+          <span class="trainer-badge-chip">HubSpot Expert</span>
+          <span class="trainer-badge-chip">SEMrush Certified</span>
+        </div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Your Lead Trainer</div>
+        <div class="trainer-role">Senior Digital Marketing Strategist &amp; AI Tools Expert</div>
+        <p class="trainer-bio">
+          A seasoned digital marketing practitioner with 8+ years of hands-on experience running campaigns for 200+ brands and growing startups alike. Specialises in performance marketing, AI powered automation, and full funnel growth strategy. Passionate about making world class digital marketing education accessible through personalised, micro batch teaching.
+        </p>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><div class="trainer-stat-num">8+</div><div class="trainer-stat-label">Years Experience</div></div>
+          <div class="trainer-stat"><div class="trainer-stat-num">1,000+</div><div class="trainer-stat-label">Students Trained</div></div>
+          <div class="trainer-stat"><div class="trainer-stat-num">300+</div><div class="trainer-stat-label">Campaigns Managed</div></div>
+          <div class="trainer-stat"><div class="trainer-stat-num">4.8⭐</div><div class="trainer-stat-label">Google Rating</div></div>
+        </div>
+        <div class="trainer-expertise">
+          <span class="exp-tag"><i class="bi bi-check-circle-fill"></i> SEO &amp; Content Strategy</span>
+          <span class="exp-tag"><i class="bi bi-check-circle-fill"></i> Google &amp; Meta Ads</span>
+          <span class="exp-tag"><i class="bi bi-check-circle-fill"></i> Marketing Automation</span>
+          <span class="exp-tag"><i class="bi bi-check-circle-fill"></i> AI Tools &amp; Prompting</span>
+          <span class="exp-tag"><i class="bi bi-check-circle-fill"></i> CRM &amp; Lead Generation</span>
+          <span class="exp-tag"><i class="bi bi-check-circle-fill"></i> Analytics &amp; Reporting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENROLL CTA -->
+<section class="enroll-cta" id="enroll">
+  <div class="container enroll-cta-content">
+    <span class="section-eyebrow" style="background:rgba(255,255,255,0.15); color:#BAE6FD; border:1px solid rgba(255,255,255,0.2);">Limited Seats · Micro Batches</span>
+    <h2>Ready to <span style="color:#38BDF8;">Transform</span> Your Career?</h2>
+    <p>Join 1,000+ students who have mastered digital marketing with AI. Seats are limited to 5–10 per batch.</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="https://wa.me/919108101795" target="_blank" class="btn-primary-hero" style="background:#25D366;"><i class="bi bi-whatsapp"></i> WhatsApp Us</a>
+      <a href="tel:9108101795" class="btn-secondary-hero"><i class="bi bi-telephone-fill"></i> Call 9108101795</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">Belgaum Institute of Digital Marketing</div>
+    <p>Advanced Digital Marketing with AI · 2026 Curriculum</p>
+    <p style="margin-top:8px; font-size:0.75rem; opacity:0.5;">Recognised by Govt. of India · ISO 9001:2015 · MSME Certified · Confidential — For Registered Students Only</p>
+  </div>
+</footer>
+
+<!-- FLOATING CONTACT BUTTON -->
+<div class="fab-container">
+  <div class="fab-options" id="fabOptions">
+    <a href="https://wa.me/919108101795" target="_blank" class="fab-option">
+      <div class="fab-option-icon fab-whatsapp-icon"><i class="bi bi-whatsapp"></i></div>
+      <span class="fab-option-label">WhatsApp</span>
+    </a>
+    <a href="tel:9108101795" class="fab-option">
+      <div class="fab-option-icon fab-call-icon"><i class="bi bi-telephone-fill"></i></div>
+      <span class="fab-option-label">Call Us</span>
+    </a>
+    <a href="https://maps.app.goo.gl/VidrzDfiY5m7C4nLA" target="_blank" class="fab-option">
+      <div class="fab-option-icon fab-location-icon"><i class="bi bi-geo-alt-fill"></i></div>
+      <span class="fab-option-label">Location</span>
+    </a>
+  </div>
+  <button class="fab-main-btn" id="fabMainBtn" onclick="toggleFab()">
+    <i class="bi bi-headset" id="fabIcon"></i>
+  </button>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Scroll to top visibility
+  window.addEventListener('scroll', () => {
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+  // Week accordion
+  function toggleWeek(card) {
+    const isActive = card.classList.contains('active-week');
+    document.querySelectorAll('.week-card').forEach(c => c.classList.remove('active-week'));
+    if (!isActive) card.classList.add('active-week');
+  }
+
+  // YouTube embed loader
+  function loadYT(containerId, embedUrl) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '<iframe src="' + embedUrl + '?autoplay=1" allowfullscreen allow="autoplay"></iframe>';
+  }
+
+  // Convert YouTube URL to embed URL
+  // Floating contact button
+  function toggleFab() {
+    const opts = document.getElementById('fabOptions');
+    const btn = document.getElementById('fabMainBtn');
+    const icon = document.getElementById('fabIcon');
+    const isOpen = opts.classList.toggle('open');
+    btn.classList.toggle('active', isOpen);
+    icon.className = isOpen ? 'bi bi-x-lg' : 'bi bi-headset';
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.fab-container')) {
+      document.getElementById('fabOptions').classList.remove('open');
+      document.getElementById('fabMainBtn').classList.remove('active');
+      document.getElementById('fabIcon').className = 'bi bi-headset';
+    }
+  });
+
+  // Gallery carousel — responsive (1 card mobile, 3 desktop)
+  let galleryIdx = 0;
+  const galleryTotal = 7;
+  function galleryVisible() { return window.innerWidth < 768 ? 1 : 3; }
+  function galleryMax() { return galleryTotal - galleryVisible(); }
+  function galleryMove(dir) {
+    galleryIdx = Math.max(0, Math.min(galleryIdx + dir, galleryMax()));
+    updateGallery();
+  }
+  function galleryGoto(i) { galleryIdx = i; updateGallery(); }
+  function updateGallery() {
+    const v = galleryVisible();
+    document.getElementById('galleryTrack').style.transform = `translateX(-${galleryIdx * (100 / v)}%)`;
+    const dotsEl = document.getElementById('galleryDots');
+    dotsEl.innerHTML = '';
+    for (let i = 0; i <= galleryMax(); i++) {
+      const btn = document.createElement('button');
+      btn.className = 'gallery-dot' + (i === galleryIdx ? ' active' : '');
+      btn.onclick = () => galleryGoto(i);
+      dotsEl.appendChild(btn);
+    }
+  }
+  window.addEventListener('resize', () => { galleryIdx = Math.min(galleryIdx, galleryMax()); updateGallery(); });
+  updateGallery();
+
+  function toEmbedUrl(url) {
+    try {
+      const u = new URL(url.trim());
+      let id = u.searchParams.get('v');
+      if (!id && u.hostname === 'youtu.be') id = u.pathname.slice(1);
+      if (!id && u.pathname.includes('/embed/')) id = u.pathname.split('/embed/')[1];
+      return id ? 'https://www.youtube.com/embed/' + id : null;
+    } catch { return null; }
+  }
+
+</script>
+</body>
+</html>
